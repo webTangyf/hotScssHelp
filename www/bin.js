@@ -1,10 +1,8 @@
-const express = require('express');
 const path = require('path');
 const chalk = require('chalk');
 const config = require('../config');
 const { scssHelp, sampleSassLoader } = require('./scssHelp');
 
-console.log(config)
 
 function run () {
 	// 创建一个Browsersync实例 
@@ -61,7 +59,8 @@ Promise.all(config.listen
 	  run()
   })
   .catch(err => {
-      console.log(chalk.red('scss编译过程爆炸，请检查config.js的配置'))
+  	console.log(err)	
+    console.log(chalk.red('scss编译过程爆炸，请检查config.js的配置'))
   })
 
 
