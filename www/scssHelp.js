@@ -3,7 +3,7 @@ const glob = require("glob");
 const fs = require('fs');
 const chalk = require('chalk');
 const nodeSass = require('node-sass');
-
+const config = require('../config');
 function scssHelp (publicfile) { // 全文件scss处理
 	return new Promise((resolve, reject) => {
 		try {
@@ -11,11 +11,12 @@ function scssHelp (publicfile) { // 全文件scss处理
 			  .sync(path.resolve(__dirname, publicfile))
 			  .filter(sasspath => /(^.+\.scss$)/.test(sasspath))
 			  .forEach(sasspath => {
-			  	var filepath = sasspath.replace(/[\/][^\/]*\.scss/, '')
-			  	var filename = sasspath.replace(/^.+?[\/]([^[\/]+?)(\.[^.\/]*?)?$/gi, '$1')
+			  	var filepath = sasspath.replace(/[\\/][^\\/]*\.scss/, '')
+			  	var filename = sasspath.replace(/^.+?[\\/]([^[\\/]+?)(\.[^.\\/]*?)?$/gi, '$1')
 			  	try {
 				  	var result = nodeSass.renderSync({
 				  	  file: sasspath,
+				  	  outputStyle: config.sassOutputStyle
 				  	});
 			  		try {
 				  		fs.writeFileSync(path.resolve(filepath, `./${filename}.css`),
@@ -24,14 +25,14 @@ function scssHelp (publicfile) { // 全文件scss处理
 			  			console.log(chalk.green(`update ${sasspath} success`));
 			  		} catch(err) {
 			  			console.log(err, chalk.red(`created page file ${sasspath} no success`));
-			  			reject()
+			  			reject(err)
 			  		}
 			  	} catch (err) {
-			  		console.log(chalk.red(error.status));
-			  		console.log(chalk.red(error.column));
-			  		console.log(chalk.red(error.message));
-			  		console.log(chalk.red(error.line));
-			  		reject()
+			  		console.log(chalk.red(err.status));
+			  		console.log(chalk.red(err.column));
+			  		console.log(chalk.red(err.message));
+			  		console.log(chalk.red(err.line));
+			  		reject(err)
 			  		return false;
 			  	}
 			  })
@@ -44,11 +45,12 @@ function scssHelp (publicfile) { // 全文件scss处理
 function sampleSassLoader (sasspath) { // 单文件scss处理
 	return new Promise((resolve, reject) => {
 		try {
-		  	var filepath = sasspath.replace(/[\/][^\/]*\.scss/, '')
-		  	var filename = sasspath.replace(/^.+?[\/]([^[\/]+?)(\.[^.\/]*?)?$/gi, '$1')
-		  	try {
+			var filepath = sasspath.replace(/[\\/][^\\/]*\.scss/, '')
+	  		var filename = sasspath.replace(/^.+?[\\/]([^[\\/]+?)(\.[^.\\/]*?)?$/gi, '$1')
+			try {
 			  	var result = nodeSass.renderSync({
 			  	  file: sasspath,
+			  	  outputStyle: config.sassOutputStyle
 			  	});
 		  		try {
 			  		fs.writeFileSync(path.resolve(filepath, `./${filename}.css`),
@@ -58,14 +60,14 @@ function sampleSassLoader (sasspath) { // 单文件scss处理
 		  			resolve()
 		  		} catch(err) {
 		  			console.log(err, chalk.red(`created page file ${sasspath} no success`));
-		  			reject()
+		  			reject(err)
 		  		}
 		  	} catch (err) {
-		  		console.log(chalk.red(error.status)); // used to be "code" in v2x and below
-		  		console.log(chalk.red(error.column));
-		  		console.log(chalk.red(error.message));
-		  		console.log(chalk.red(error.line));
-		  		reject()
+		  		console.log(chalk.red(err.status)); // used to be "code" in v2x and below
+		  		console.log(chalk.red(err.column));
+		  		console.log(chalk.red(err.message));
+		  		console.log(chalk.red(err.line));
+		  		reject(err)
 		  		return false;
 		  	}
 	  	} catch (e) {

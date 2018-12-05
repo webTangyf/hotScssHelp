@@ -1,9 +1,13 @@
+const PROJECTNAME = 'test'
 module.exports = {
 	entry: './public',
-	open: '/yh/page/trade/purchase/index.html',
+	open: `/${PROJECTNAME}/index.html`,
+	// 监听单文件更新的文件夹
 	listen: [
-		'./public/yh/page/**'
+		`./public/${PROJECTNAME}/*`
 	],
-	publicListen: './public/yh/src',
-	port: 3000
+	// 公共区域文件夹
+	publicListen: `./public/${PROJECTNAME}/src`,
+	port: 3000,
+	sassOutputStyle: 'expanded' // nested, expanded, compact, compressed node-sass 官方类型
 }

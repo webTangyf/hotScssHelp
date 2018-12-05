@@ -23,8 +23,9 @@ function run () {
 				  .then(() => {
 					  console.log(chalk.green('公共区域热更新完毕'))
 				  })
-				  .catch(() => {
-				      console.log(chalk.red('公共区域热更新错误'))
+				  .catch((e) => {
+				  	console.log(e)
+				    console.log(chalk.red('公共区域热更新错误'))
 				  })
 			} else {
 				bs.reload()
@@ -43,7 +44,6 @@ function run () {
 			}
 		}
 	});
-
 	// 现在初始化的Browsersync服务器
 	bs.init({
 		port: config.port,
@@ -61,7 +61,7 @@ Promise.all(config.listen
   .catch(err => {
   	console.log(err)	
     console.log(chalk.red('scss编译过程爆炸，请检查config.js的配置'))
-  })
+})
 
 
 
