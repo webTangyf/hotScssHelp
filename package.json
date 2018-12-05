@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node ./www/bin"
+    "dev": "node ./www/bin",
+    "doc": "node ./www/doc"
   },
   "author": "",
   "license": "ISC",

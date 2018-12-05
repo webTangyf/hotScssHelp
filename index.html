@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>hot-scss-help | hotScssHelp使用说明</title>
+    <meta name="description" content="帮组开发者进行本地的scss快速使用以及热更新">
+    
+    
+    <link rel="preload" href="/assets/css/1.styles.d142bd6f.css" as="style"><link rel="preload" href="/assets/js/app.a2c366b5.js" as="script"><link rel="preload" href="/assets/js/0.88054709.js" as="script">
+    <link rel="stylesheet" href="/assets/css/1.styles.d142bd6f.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/" class="home-link router-link-exact-active router-link-active"><!----><span class="site-name">
+      hot-scss-help
+    </span></a><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div><!----></div></header><div class="sidebar-mask"></div><div class="sidebar"><!----><!----></div><div class="page"><div class="content"><h1 id="hotscsshelp使用说明"><a href="#hotscsshelp使用说明" aria-hidden="true" class="header-anchor">#</a> hotScssHelp使用说明</h1><h2 id="基本介绍"><a href="#基本介绍" aria-hidden="true" class="header-anchor">#</a> 基本介绍</h2><p>本项目用于 不想使用sass， 不想使用webpack等模块化打包工具，并且想要scss自动编译，热更新的环境下使用。</p><h2 id="目录结构"><a href="#目录结构" aria-hidden="true" class="header-anchor">#</a> 目录结构</h2><pre><code>├── README.md                      使用说明
+├── config.js                      配置项
+├── package.json
+├── public                         默认监听入口
+│   └── test
+│       ├── index.css
+│       ├── index.html
+│       ├── index.scss
+│       └── src
+│           ├── css
+│           ├── js
+│           ├── libs
+│           └── scss
+│               └── base.scss
+├── www                            核心代码
+│   ├── bin.js
+│   └── scssHelp.js              
+└── yarn.lock
+</code></pre><h2 id="命令行"><a href="#命令行" aria-hidden="true" class="header-anchor">#</a> 命令行</h2><pre><code>yarn run dev 或者 npm run dev
+</code></pre><h2 id="配置项"><a href="#配置项" aria-hidden="true" class="header-anchor">#</a> 配置项</h2><ul><li><p>entry文件入口<br>默认值：public<br> 参数类型: 字符串</p></li><li><p>open启动时打开的html页面<br>默认值：'./test/index.html'<br> 参数类型: 字符串</p></li><li><p>listen监听的范围<br>默认值：'./public/test'<br> 参数类型: 字符串<br> 当此文件发生改变时会触发当前页面的刷新</p></li><li><p>publicListen公共监听的范围<br>默认值：'./public/test/src'<br> 参数类型: 字符串<br> 当此文件发生改变时会触发全局页面的刷新</p></li><li><p>port热更新服务端口<br>默认值：3000<br> 参数类型: 数值</p></li><li><p>sassOutputStyle nodeScss打包配置<br> 默认值： 'expanded' <br> 参数类型: 字符串 <br><a href="https://www.npmjs.com/package/node-sass">具体点击这里进行查看</a></p></li></ul><h2 id="使用方法"><a href="#使用方法" aria-hidden="true" class="header-anchor">#</a> 使用方法</h2><p>在配置项中设置listen位置下添加 html 文件 以及 scss文件，并在html中引入scss文件同名的css文件， 执行命令行即可打开页面，进行开发</p></div><!----><!----></div></div></div>
+    <script src="/assets/js/0.88054709.js" defer></script><script src="/assets/js/app.a2c366b5.js" defer></script>
+  </body>
+</html>

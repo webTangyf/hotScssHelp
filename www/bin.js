@@ -48,8 +48,9 @@ function run () {
 	bs.init({
 		port: config.port,
 		startPath: config.open,
-	    server: path.resolve(__dirname, '../' , config.entry)
+	  server: path.resolve(__dirname, '../' , config.entry)
 	});
+	
 }
 Promise.all(config.listen
   .map(d => {
